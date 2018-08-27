@@ -11,5 +11,5 @@ app.use(express.static('./build'))
 app.get('/', (req, res) => res.sendFile('./build/index.html'))
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`listening on http://0.0.0.0:${port}`)
+    console.log(`Listening on http://0.0.0.0:${port}`)
 })

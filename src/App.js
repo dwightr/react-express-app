@@ -6,41 +6,25 @@ class App extends Component {
     super();
     this.state = { 
             users: [
-            // hardcoded users for test purposes
-              // { id: 1, username: 'dwight'},
-              // { id: 2, username: 'kamogelo'},
-              // { id: 3, username: 'remoratile'},
+              // { id: 1, name: 'dwight'},
+              // { id: 2, name: 'kamo'}
             ]
         }
   }
 
   componentDidMount() {
-    // fetch('/users')
-    // .then(res => res.json())
-    // .then(users => this.setState({ users: users }))
     this.fetchData()
     
   }
 
   fetchData() {
+    // fetch('/users')
     fetch('/api/puppies')
-    // fetch('https://randomuser.me/api/?results=5&nat=us,dk,fr,gb')
     .then(res => res.json())
-    // .then(parsedJSON => console.log(parsedJSON.results))
-    // .then(parsedJSON => parsedJSON.data.map(user => (
-    //   {
-    //     name: `${user.name.first} ${user.name.last}`,
-    //     username: `${user.login.username}`,
-    //     email: `${user.email}`,
-    //     location: `${user.location.street}, ${user.location.city}`,
-    //   }
-    // )))
     .then(parsedJSON => parsedJSON.data.map(user => (
       {
         id: `${user.id}`,
         name: `${user.name}`,
-        // email: `${user.email}`,
-        // location: `${user.location.street}, ${user.location.city}`,
       }
     )))
     .then(users => this.setState({ users: users }))
@@ -52,8 +36,7 @@ class App extends Component {
       <div className="App">
         <h1>Users</h1>
         <ul>
-          {this.state.users.map(user => 
-          // <li key={user.username}>{user.username}</li>
+          {this.state.users.map(user =>
           <li key={user.id}>{user.name}</li>
           )}
         </ul>
